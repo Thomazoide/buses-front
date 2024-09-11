@@ -18,7 +18,7 @@ export default function ChoferList(props: Readonly<CLProps>): ReactElement{
         )
     }
     return(
-        <div className="flex flex-col border-1 border-dotted border-default-900 shadow-lg rounded-xl max-h-[100vh] min-w-[375px] max-w-[500px] overflow-y-scroll ">
+        <div className="flex flex-col border-1 border-dotted border-default-900 shadow-lg rounded-xl p-[15px] max-h-[100vh] min-w-[375px] max-w-[500px] overflow-y-scroll ">
             {
                 props.choferes.map( (chofer) => chofer.ubicacion && (
                     <Chip key={chofer.id} color="warning">

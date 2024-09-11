@@ -29,7 +29,8 @@ export function Map(props: Readonly<MapProps>): ReactElement{
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">Open StreetMap</a> contributors'/>
             { props.choferes[0] &&
                 props.choferes.map( (chofer) => chofer.ubicacion && (
-                    <ReactLeafletDriftMarker 
+                    <ReactLeafletDriftMarker
+                    key={chofer.id} 
                     duration={1200}
                     position={{
                         lat: chofer.ubicacion.locations[0].coords.latitude,
