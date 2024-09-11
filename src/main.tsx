@@ -4,6 +4,7 @@ import App from './App.tsx';
 import { BrowserRouter } from 'react-router-dom';
 import { Providers } from './providers.tsx';
 import './main.css';
+import 'leaflet/dist/leaflet.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

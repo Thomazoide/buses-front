@@ -7,7 +7,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path='/playground' Component={Playground} />
+      <Route path='/' Component={Playground} />
     </Routes>
   );
 }

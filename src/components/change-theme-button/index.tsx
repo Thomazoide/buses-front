@@ -8,7 +8,7 @@ export const ChangeThemeButton = (props: ButtonProps) => {
 
   return (
     <Button onClick={toggleThemeMode} startContent={isDark ? <MdLightMode /> : <MdDarkMode />} {...props}>
-      {isDark ? 'Light' : 'Dark'}
+      {isDark ? 'Claro' : 'Oscuro'}
     </Button>
   );
 };
