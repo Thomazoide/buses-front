@@ -24,6 +24,7 @@ export function MapSection(): ReactElement{
                 return
             }
             setChoferes(response.data.data)
+            console.log("fetched")
         }catch(error: any){
             setIsFetchError(true)
             setErrorMessage(error.message)
@@ -63,15 +64,15 @@ export function MapSection(): ReactElement{
         <div className="container flex flex-wrap gap-4 justify-evenly w-full mx-4 border-solid border-3 border-warning-300 rounded-xl p-[15px] ">
             {
                 isFetchError && errorMessage &&
-                <FetchFrame bg="red" message={errorMessage}/>
+                <FetchFrame bg="red" message={errorMessage} setShowFrame={setIsFetchError} />
             }
             {
-                choferes &&
-                <ChoferList choferes={choferes}/>
+                choferes && buses && 
+                <ChoferList choferes={choferes} buses={buses}/>
             }
             {
                 choferes && buses &&
-                <div className="flex justify-center min-w-[370px] lg:w-[700px] h-[500px] border-1 border-dotted border-default-900 rounded-lg shadow-lg p-[10px]" >
+                <div className="flex justify-center w-full lg:w-[700px] h-[500px] border-1 border-double border-default-900 rounded-lg shadow-lg p-[10px]" >
                 <Map buses={buses} choferes={choferes}/>
                 </div>
             }

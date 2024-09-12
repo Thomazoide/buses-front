@@ -1,10 +1,11 @@
-import { ReactElement } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 import CloseIcon from "./CloseIcon";
 import { Button } from "@nextui-org/react";
 
 interface FFProps{
     message: string
     bg: "red" | "green"
+    setShowFrame: Dispatch<SetStateAction<boolean>>
 }
 
 export default function FetchFrame(props: Readonly<FFProps>): ReactElement{
@@ -14,7 +15,7 @@ export default function FetchFrame(props: Readonly<FFProps>): ReactElement{
             <div className="w-full h-fit flex justify-end ">
                 <Button variant="ghost" color="warning" isIconOnly startContent={
                     <CloseIcon/>
-                }/>
+                } onClick={ () => props.setShowFrame(false)} />
             </div>
             <hr/>
             <div className="flex text-justify text-default-50">

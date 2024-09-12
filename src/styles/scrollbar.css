@@ -1,0 +1,24 @@
+.new-scrollbar{
+    scrollbar-width: thin;
+    scrollbar-color: yellow;
+}
+
+.new-scrollbar::-webkit-scrollbar{
+    width: 12px;
+    border-radius: 50%;
+}
+
+.new-scrollbar::-webkit-scrollbar-button{
+    display: none;
+}
+
+.new-scrollbar::-webkit-scrollbar-track{
+    background: yellow;
+    border-radius: 50%;
+}
+
+.new-scrollbar::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}

@@ -1,8 +1,8 @@
 import { Bus, Chofer } from "@/types/payloads";
-import { LatLngExpression } from "leaflet";
+import { LatLngExpression, icon } from "leaflet";
 import { ReactElement } from "react";
 import { MapContainer, Popup, TileLayer } from "react-leaflet";
-import ReactLeafletDriftMarker from 'react-leaflet-drift-marker'
+import ReactLeafletDriftMarker from "react-leaflet-drift-marker"
 
 interface MapProps{
     choferes: Chofer[]
@@ -15,6 +15,13 @@ export function Map(props: Readonly<MapProps>): ReactElement{
         lat: -33.593757, 
         lng: -70.567672
     }
+
+    const busIcon = icon({
+        iconUrl: "https://storagejca.s3.sa-east-1.amazonaws.com/icono.png",
+        iconSize: [24, 24],
+        iconAnchor: [16, 16],
+        popupAnchor: [0, -34]
+    })
 
     return(
         <MapContainer 
@@ -35,7 +42,8 @@ export function Map(props: Readonly<MapProps>): ReactElement{
                     position={{
                         lat: chofer.ubicacion.locations[0].coords.latitude,
                         lng: chofer.ubicacion.locations[0].coords.longitude
-                    }}>
+                    }}
+                    icon={busIcon}>
                         <Popup closeButton>
                             <strong> {chofer.nombre} </strong>
                         </Popup>
