@@ -1,6 +1,11 @@
 import { Bus, Chofer, ResponsePayload } from "@/types/payloads";
 import axios, { AxiosResponse } from "axios";
 import { ReactElement, useState, useEffect } from "react";
+import FetchFrame from "../generic/fetchFrame";
+import BusFunctionalList from "./busFunctionalList";
+import { Button, Spinner } from "@nextui-org/react";
+import BusDataDisplay from "./busDataDisplay";
+import AddBusForm from "./addBusForm";
 
 export default function BusSection(): ReactElement{
     const [buses, setBuses] = useState<Bus[]>()
@@ -29,6 +34,7 @@ export default function BusSection(): ReactElement{
     }
 
     const fetchChofer = async function(patente: string){
+        setIsLoading(true)
         const CHOFER_ENDPOINT: string = `${import.meta.env.VITE_API_URL}/choferes/patente`
         const REQUEST_BODY: Partial<Bus> = {
             patente
@@ -44,6 +50,8 @@ export default function BusSection(): ReactElement{
         }catch(error: any){
             setIsFetchError(true)
             setErrorMessage(error.message)
+        }finally{
+            setIsLoading(false)
         }
     }
 
@@ -55,7 +63,27 @@ export default function BusSection(): ReactElement{
     
     return(
         <div className="container flex flex-wrap gap-4 justify-evenly w-full mx-4 border-solid border-3 border-warning-300 rounded-xl p-[15px]">
-            
+            {
+                isFetchError && errorMessage &&
+                <FetchFrame bg="red" message={errorMessage} setShowFrame={setIsFetchError}/>
+            }
+            {
+                buses &&
+                <BusFunctionalList buses={buses} fetchChoferFunction={fetchChofer} setSelectedBus={setSelectedBus}/>
+            }
+            {
+                isLoading ?
+                <Spinner color="warning" size="sm"/>
+                : !isLoading && selectedBus &&
+                <BusDataDisplay bus={selectedBus} chofer={busChofer}/>
+            }
+            <Button variant="bordered" color="warning" onClick={ () => setShowAddBusForm(!showAddBusForm)}>
+                Agregar bus
+            </Button>
+            {
+                showAddBusForm &&
+                <AddBusForm/>
+            }
         </div>
     )
 }
