@@ -38,7 +38,7 @@ export default function ChoferList(props: Readonly<CLProps>): ReactElement{
 
     if(!props.choferes[0]){
         return(
-            <div className="flex flex-col border-1 border-dotted border-default-900 shadow-lg rounded-xl max-h-[100vh] w-fit p-[15px] ">
+            <div className="flex flex-col border-1 border-dotted border-default-900 shadow-md shadow-warning-500 rounded-xl max-h-[100vh] w-fit p-[15px] ">
                 <h1>
                     Sin datos de choferes...
                 </h1>
@@ -46,7 +46,7 @@ export default function ChoferList(props: Readonly<CLProps>): ReactElement{
         )
     }
     return(
-        <div className="flex flex-col border-1 border-double border-default-900 shadow-lg rounded-xl p-[15px] max-h-[100vh] max-w-[500px]">
+        <div className="flex flex-col border-1 border-double border-default-900 shadow-md shadow-warning-500 rounded-xl p-[15px] max-h-[100vh] max-w-[500px]">
             <ScrollShadow className="flex flex-col items-center gap-3 p-[15px] w-full h-full ">
             { entities &&
                 entities.map( (entity) => entity.chofer.ubicacion && (

@@ -72,7 +72,7 @@ export function MapSection(): ReactElement{
             }
             {
                 choferes && buses &&
-                <div className="flex justify-center w-full lg:w-[700px] h-[500px] border-1 border-double border-default-900 rounded-lg shadow-lg p-[10px]" >
+                <div className="flex justify-center w-full lg:w-[700px] h-[500px] border-1 border-double border-default-900 rounded-lg shadow-md shadow-warning-500 p-[10px]" >
                 <Map buses={buses} choferes={choferes}/>
                 </div>
             }
